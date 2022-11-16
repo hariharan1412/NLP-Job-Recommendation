@@ -1,0 +1,94 @@
+{
+  "lang":"en",
+  "name":"pipeline",
+  "version":"0.0.0",
+  "spacy_version":">=3.3.1,<3.4.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"5fb597f77",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null,
+    "mode":"default"
+  },
+  "labels":{
+    "tok2vec":[
+
+    ],
+    "ner":[
+      "CERTIFICATION",
+      "GRADE",
+      "JOB ROLE",
+      "Location",
+      "QUALIFICATION",
+      "SALARY",
+      "SKILLS",
+      "WORK MODE"
+    ]
+  },
+  "pipeline":[
+    "tok2vec",
+    "ner"
+  ],
+  "components":[
+    "tok2vec",
+    "ner"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "ents_f":0.9851851852,
+    "ents_p":0.9815498155,
+    "ents_r":0.9888475836,
+    "ents_per_type":{
+      "QUALIFICATION":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "JOB ROLE":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "SKILLS":{
+        "p":0.9795918367,
+        "r":0.9795918367,
+        "f":0.9795918367
+      },
+      "SALARY":{
+        "p":0.9565217391,
+        "r":0.9777777778,
+        "f":0.967032967
+      },
+      "WORK MODE":{
+        "p":1.0,
+        "r":0.962962963,
+        "f":0.9811320755
+      },
+      "GRADE":{
+        "p":0.9677419355,
+        "r":1.0,
+        "f":0.9836065574
+      },
+      "Location":{
+        "p":0.95,
+        "r":1.0,
+        "f":0.9743589744
+      },
+      "CERTIFICATION":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      }
+    },
+    "tok2vec_loss":75.6333597223,
+    "ner_loss":555.3510288565
+  }
+}
