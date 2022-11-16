@@ -5,11 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+
+        body{
+            /* background-image: url("/home/hariharan/project/nlp-job-recommendation/bg1.jpg"); */
+            background-size: contain;
+            background-repeat: repeat;
+            background-image: linear-gradient(to left,pink,orange);
+
+        }
+            
+        #job{
+            color: white;
+            background-image: linear-gradient(to left,#42275a, #734b6d);
+            background-image: linear-gradient(to right,#42275a, #734b6d);
+            
+            margin: 0.5%;
+            padding-left: 1%;
+            line-height: 30px;
+        }   
+
+        #info{
+            color: black;
+            margin: 0.5%;
+            line-height: 30px;
+        }
+            
+    </style>
+
 </head>
+
 <body>
     
+
+    <h2 id="info">
+        Your Skills : {{job_skills}} <br>
+        Total Jobs appeared : {{job_len}}
+    </h2>
+    
     {% for item in jobs%}
-        <div style="background:rgb(3, 252, 252);color:rgb(3, 103, 252);margin: 0.5%;padding: 1%;">
+
+    <div id="job">
         {% for i in item.values() %}
             <br>
             {{ i }}
@@ -20,4 +57,5 @@
         {% endfor %}
  
 </body>
+
 </html>

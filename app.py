@@ -6,8 +6,8 @@ import spacy
 
 app = Flask(__name__)
 
+#EXTRACT SKILLS FROM THE GIVEN TEXT
 def extract_information_from_user(text):
-
     key=[]
     value=[]
     nlp = spacy.load("./output/model-best/")
@@ -23,14 +23,16 @@ def extract_information_from_user(text):
     SKILLS= Dict["SKILLS"].split(",")
 
     Dict.update(SKILLS=SKILLS)
-    print(Dict["SKILLS"])
-    
+
+    text = Dict["SKILLS"]
+
     return retirve_info_from_db(text)
 
+#RETRIVE RELATED JOBS BASED ON JACCARD COEFFICIENT 
 def retirve_info_from_db(user_list):
 
     len_user_list = len(user_list)
-    n = mydb.find( { 'skills': { '$in': user_list}} ,{'_id':0}) 
+    n = mydb.find( { 'skills': { '$in': user_list}} ,{'_id':0}) #COLLECTING JOBS BASED ON MATCHING SKILLS
 
     jobs = []
     for i in n:
@@ -43,18 +45,18 @@ def retirve_info_from_db(user_list):
         i['rank'] = match/total_len #RANKING COEFFICIENT
         jobs.append(i)
 
-    return show_info(jobs)
+    return show_info(jobs , user_list , len(jobs))
 
-def show_info(jobs):
+#SORT THE JOBS RANK WISE AND DISPLAY
+def show_info(jobs , job_skills , job_len):
 
     jobs.sort(key=operator.itemgetter('rank') , reverse=True) #SORTING JOBS BASED ON THE RANK SCORE
-    return render_template('show_job.html' , jobs=jobs)
+    return render_template('show_job.html' , jobs=jobs , job_skills=job_skills , job_len=job_len)
  
 
 @app.route('/')
 def hello():
     return render_template('index.html')
-
 
 @app.route('/', methods=['POST'])
 def my_form_post():
@@ -70,7 +72,8 @@ if __name__ == "__main__":
     client = MongoClient(connection_string)
 
     db = client['jobs']
-    mydb = db['narkuri']
+    mydb = db['narkuri_tech_jobs']
+
     
     #STARTING THE APPLICATION
     app.run(host="0.0.0.0" ,port=5000, debug = True)

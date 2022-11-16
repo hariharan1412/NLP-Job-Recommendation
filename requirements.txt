@@ -1,0 +1,5 @@
+beautifulsoup4==4.11.1
+Flask==2.2.1
+pymongo==4.2.0
+selenium==4.6.0
+spacy==3.4.0
