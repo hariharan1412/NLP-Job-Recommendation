@@ -7,7 +7,6 @@ import spacy
 app = Flask(__name__)
 
 def extract_information_from_user(text):
-    # TODO : pass the text to NLP model to retrive information and need to pass it to job 
 
     key=[]
     value=[]
@@ -31,7 +30,7 @@ def extract_information_from_user(text):
 def retirve_info_from_db(user_list):
 
     len_user_list = len(user_list)
-    n = mydb.find( { 'skills': { '$in': user_list}} ,{'_id':0}) #COLLECTING JOBS BASED ON MATCHING SKILLS
+    n = mydb.find( { 'skills': { '$in': user_list}} ,{'_id':0}) 
 
     jobs = []
     for i in n:
